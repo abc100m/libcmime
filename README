@@ -1,3 +1,9 @@
+Mingw-64 port rmearks---------------------------------
+    cmake ..
+    got "FL_LIBRARY (ADVANCED)" error! I don't why! 
+    I just use cmake-gui.exe (a win32 release version) to generate makefile, it successed!
+
+
 WHAT IS LIBCMIME?
 -------------------------------------------------------------------------------
 
