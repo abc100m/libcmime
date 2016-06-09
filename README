@@ -1,6 +1,15 @@
-Mingw-64 port rmearks---------------------------------
+Mingw-64 port rmearks
+-------------------------------------------------------------------------------
+1. depend library
+    libevil
+    
+after build libevil, need setup two Environment:
+    export LIB_EVIL_SOURCE_DIR=/E/mingwlib/include
+    export LIB_EVIL_LIB_DIR=/E/mingwlib/lib
+
+2.about cmake error
     cmake ..
-    got "FL_LIBRARY (ADVANCED)" error! I don't why! 
+    got "FL_LIBRARY (ADVANCED)" error! I don't know why! 
     I just use cmake-gui.exe (a win32 release version) to generate makefile, it successed!
 
 
