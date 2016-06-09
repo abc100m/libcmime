@@ -5,7 +5,7 @@ ADD_FLEX_BISON_DEPENDENCY(cmime_scanner cmime_parser)
 
 include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
-	${CMAKE_CURRENT_BINARY_DIR}
+	${CMAKE_CURRENT_BINARY_DIR}	
 )
 
 set(LIBCMIME_SRC 
@@ -24,8 +24,8 @@ set(LIBCMIME_SRC
 	${FLEX_cmime_scanner_OUTPUTS}
 )
 
-add_library(cmime SHARED ${LIBCMIME_SRC})
-target_link_libraries(cmime ${FLEX_LIBRARIES})
+add_library(cmime STATIC ${LIBCMIME_SRC})
+target_link_libraries(cmime ${FLEX_LIBRARIES} evil Ws2_32)
 set_property(TARGET cmime PROPERTY PUBLIC_HEADER cmime.h )
 set_property(TARGET cmime PROPERTY PRIVATE_HEADER
         cmime_address.h
@@ -47,4 +47,6 @@ install(TARGETS cmime
 	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 	PUBLIC_HEADER DESTINATION include
 	PRIVATE_HEADER DESTINATION include/cmime
+	RUNTIME DESTINATION bin
+	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )

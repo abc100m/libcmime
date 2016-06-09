@@ -27,6 +27,10 @@
 #include "cmime_config.h"
 #include "cmime_util.h"
 
+#ifdef _WIN32
+    #include <libevil/Evil.h>
+#endif
+
 CMimeInfo_T *_split_combined_info(char *combined) {
     CMimeInfo_T *mi = NULL;
     char *t1 = NULL;

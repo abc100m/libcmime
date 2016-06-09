@@ -92,6 +92,21 @@ configure_file(
     @ONLY
 )
 
+#libevil, for port to mingw-64
+set(LIB_EVIL_SOURCE_DIR "$ENV{LIB_EVIL_SOURCE_DIR}")
+if (NOT LIB_EVIL_SOURCE_DIR) 
+	message("Cannot find LIB_EVIL_SOURCE_DIR") 
+endif()
+
+set(LIB_EVIL_LIB_DIR "$ENV{LIB_EVIL_LIB_DIR}")
+if (NOT LIB_EVIL_LIB_DIR) 
+	message("Cannot find LIB_EVIL_LIB_DIR") 
+endif()
+
+include_directories(${LIB_EVIL_SOURCE_DIR})
+link_directories(${LIB_EVIL_LIB_DIR})
+#end of libevil
+
 add_subdirectory(src)
 add_subdirectory(test)
 add_subdirectory(examples)

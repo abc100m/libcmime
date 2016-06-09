@@ -33,6 +33,10 @@
 #include "cmime_flbi.h"
 #include "cmime_qp.h"
 
+#ifdef _WIN32
+    #include <libevil/Evil.h>
+    #include <Winsock2.h>
+#endif
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 typedef struct {
@@ -993,10 +997,10 @@ char *cmime_message_generate_message_id(void) {
     gethostname(hostname,MAXHOSTNAMELEN);
         
     mid = (char *)malloc(20 + strlen(hostname));
-    srandom(getpid() ^ time((time_t *) 0));
+    srand(getpid() ^ time((time_t *) 0));
     for(i=0; i < 2; i++) {
         for (i2=0; i2<8; i2++) 
-            mid[pos++] = base36[random() % 36];
+            mid[pos++] = base36[rand() % 36];
         
         if (i==0)
             mid[pos++] = '.';
